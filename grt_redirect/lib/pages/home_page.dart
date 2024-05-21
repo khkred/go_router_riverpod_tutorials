@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 
 import '../providers/auth_provider.dart';
 
@@ -24,6 +25,18 @@ class HomePage extends ConsumerWidget {
                   ref.read(authProvider.notifier).logout();
                 },
                 child: const Text('Logout')),
+            const SizedBox(height: 20),
+            ElevatedButton(
+                onPressed: () {
+                  context.go('/home/profile');
+                },
+                child: const Text('Go to Profile')),
+            const SizedBox(height: 20),
+            ElevatedButton(
+                onPressed: () {
+                  context.go('/home/settings');
+                },
+                child: const Text('Go to Settings')),
           ],
         ),
       ),
