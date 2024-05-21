@@ -16,11 +16,13 @@ final routerProvider = Provider<GoRouter>((ref) {
       redirect: (context, state) {
 
         final loggedIn = ref.watch(authProvider);
+        final isLoggingIn = state.path == '/login';
 
-        if (loggedIn) {
-          return '/home';
-        } else {
+        if (!loggedIn && !isLoggingIn) {
           return '/login';
+        } else if(loggedIn && isLoggingIn) {
+          return '/home';
         }
+        return null;
       });
 });
