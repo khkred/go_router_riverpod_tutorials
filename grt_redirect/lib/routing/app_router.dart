@@ -12,7 +12,7 @@ import '../pages/settings_page.dart';
 import '../providers/auth_provider.dart';
 
 FutureOr<String?> redirectIfNotLoggedIn(ProviderRef ref) {
-  final loggedIn = ref.watch(authProvider);
+  final loggedIn = ref.watch(authProvider)['loggedIn'];
   if (!loggedIn) {
     return '/login';
   }
@@ -51,11 +51,21 @@ final routerProvider = Provider<GoRouter>((ref) {
         GoRoute(
           path: '/admin',
           builder: (context, state) => const AdminPage(),
-          redirect: (context, state) => redirectIfNotLoggedIn(ref),
+          redirect: (context, state) {
+            final loggedIn = ref.watch(authProvider)['loggedIn'];
+            final role = ref.watch(authProvider)['role'];
+            if (!loggedIn) {
+              return '/login';
+            }
+            if(role != 'admin'){
+              return '/home';
+            }
+            return null;
+          },
         ),
       ],
       redirect: (context, state) {
-        final loggedIn = ref.watch(authProvider);
+        final loggedIn = ref.watch(authProvider)['loggedIn'];
         final isLoggingIn = state.path == '/login';
 
         if (!loggedIn && !isLoggingIn) {

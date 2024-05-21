@@ -21,9 +21,15 @@ class LoginPage extends ConsumerWidget {
             const SizedBox(height: 20),
             ElevatedButton(
                 onPressed: () {
-                  ref.read(authProvider.notifier).login();
+                  ref.read(authProvider.notifier).login('user');
                 },
-                child: const Text('Login')),
+                child: const Text('Login as User')),
+            const SizedBox(height: 20),
+            ElevatedButton(
+                onPressed: () {
+                  ref.read(authProvider.notifier).login('admin');
+                },
+                child: const Text('Login as Admin')),
           ],
         ),
       ),
