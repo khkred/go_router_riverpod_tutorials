@@ -37,6 +37,12 @@ class HomePage extends ConsumerWidget {
                   context.go('/home/settings');
                 },
                 child: const Text('Go to Settings')),
+            const SizedBox(height: 20),
+            ElevatedButton(
+                onPressed: () {
+                  context.go('/admin');
+                },
+                child: const Text('Go to Admin')),
           ],
         ),
       ),
