@@ -65,9 +65,13 @@ final postsByUserProvider = FutureProvider<List<Post>>((ref) async {
       'https://jsonplaceholder.typicode.com/posts?userId=${selectedUser.id}'));
 
   if (response.statusCode == 200) {
-    final jsonData = json.decode(response.body);
+    List jsonData = json.decode(response.body);
 
     return jsonData.map((post) => Post.fromJson(post)).toList();
+
+
+
+
   } else {
     throw Exception('Failed to load posts');
   }
