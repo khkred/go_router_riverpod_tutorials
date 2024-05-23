@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:riverpod_total/pages/home_page.dart';
+
+import 'pages/home_page.dart';
+
 
 void main() {
   runApp( const ProviderScope(child: MyApp()));
