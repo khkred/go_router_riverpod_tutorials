@@ -68,11 +68,22 @@ final postsByUserProvider = FutureProvider<List<Post>>((ref) async {
     List jsonData = json.decode(response.body);
 
     return jsonData.map((post) => Post.fromJson(post)).toList();
-
-
-
-
   } else {
     throw Exception('Failed to load posts');
+  }
+});
+
+//Provider with family modifier
+final postsByUserIdProvider =
+    FutureProvider.family<List<Post>, int>((ref, userId) async {
+  final response = await http.get(
+      Uri.parse('https://jsonplaceholder.typicode.com/posts?userId=$userId'));
+
+  if (response.statusCode == 200) {
+    List jsonData = json.decode(response.body);
+
+    return jsonData.map((post) => Post.fromJson(post)).toList();
+  } else {
+    throw Exception('Unable to fetch posts from $userId');
   }
 });
