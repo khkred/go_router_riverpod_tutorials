@@ -3,9 +3,11 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_total/pages/posts_page.dart';
 import 'package:riverpod_total/pages/posts_stream_page.dart';
 import 'package:riverpod_total/pages/to_do_page.dart';
+import 'package:riverpod_total/pages/user_id_posts_page.dart';
 import 'package:riverpod_total/pages/user_posts_page.dart';
 
 import '../providers/basic_providers.dart';
+import 'posts_auto_dispose_page.dart';
 
 class HomePage extends ConsumerWidget {
   const HomePage({super.key});
@@ -84,6 +86,15 @@ class HomePage extends ConsumerWidget {
                           builder: (context) => const UserPostsPage()));
                 },
                 child: const Text('Go to Users Posts Page')),
+            const SizedBox(height: 20),
+            ElevatedButton(onPressed: (){
+              Navigator.push(context, MaterialPageRoute(builder: (context)=> const UserIdPostsPage()));
+            }, child: const Text('Go to Users Posts By Id Page')),
+            const SizedBox(height: 20),
+            ElevatedButton(onPressed: (){
+              Navigator.push(context, MaterialPageRoute(builder: (context)=> const PostsAutoDisposePage()));
+            }, child: const Text('Go to Posts AutoDispose Page'))
+
           ],
         ),
       ),
