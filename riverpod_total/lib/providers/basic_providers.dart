@@ -87,3 +87,17 @@ final postsByUserIdProvider =
     throw Exception('Unable to fetch posts from $userId');
   }
 });
+
+final autoDisposePostsProvider =
+    FutureProvider.autoDispose<List<Post>>((ref) async {
+  final response =
+      await http.get(Uri.parse('https://jsonplaceholder.typicode.com/posts'));
+
+  if (response.statusCode == 200) {
+    List jsonData = json.decode(response.body);
+
+    return jsonData.map((post) => Post.fromJson(post)).toList();
+  } else {
+    throw Exception('Failed to load posts');
+  }
+});
