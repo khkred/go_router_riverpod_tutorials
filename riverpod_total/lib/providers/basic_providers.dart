@@ -101,3 +101,20 @@ final autoDisposePostsProvider =
     throw Exception('Failed to load posts');
   }
 });
+
+final autoDisposeKeepAliveUsersProvider =
+    FutureProvider.autoDispose<List<User>>((ref) async {
+  //Keeps this provider alive even when it's no longer being listened to
+  ref.keepAlive();
+
+  final response =
+      await http.get(Uri.parse('https://jsonplaceholder.typicode.com/users'));
+
+  if (response.statusCode == 200) {
+    List jsonData = json.decode(response.body);
+
+    return jsonData.map((user) => User.fromJson(user)).toList();
+  } else {
+    throw Exception('Unable to load users');
+  }
+});
