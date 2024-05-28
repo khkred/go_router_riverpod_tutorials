@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:riverpod_practice/pages/count_state_provider_page.dart';
 import 'package:riverpod_practice/pages/hello_world_provider_page.dart';
+import 'package:riverpod_practice/pages/to_do_notifier_provider_page.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -38,6 +39,17 @@ class HomePage extends StatelessWidget {
                     );
                   },
                   child: const Text('Count State Provider Page')),
+              const SizedBox(height: 20),
+              ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const ToDoNotifierProviderPage(),
+                      ),
+                    );
+                  },
+                  child: const Text('Todo Notifier Provider Page')),
             ],
           ),
         ),
