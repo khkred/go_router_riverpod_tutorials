@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:riverpod_practice/pages/count_state_provider_page.dart';
 import 'package:riverpod_practice/pages/hello_world_provider_page.dart';
 
 class HomePage extends StatelessWidget {
@@ -25,7 +26,18 @@ class HomePage extends StatelessWidget {
                       ),
                     );
                   },
-                  child: const Text('Hello World Provider Page'))
+                  child: const Text('Hello World Provider Page')),
+              const SizedBox(height: 20),
+              ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const CountStateProviderPage(),
+                      ),
+                    );
+                  },
+                  child: const Text('Count State Provider Page')),
             ],
           ),
         ),
