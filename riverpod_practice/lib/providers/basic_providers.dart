@@ -10,3 +10,6 @@ final helloWorldProvider = Provider<String>((ref) => helloWorldString);
 /// State Provider that'll help us return an integer and modify the value too
 int count = 0;
 final countStateProvider = StateProvider<int>((ref) => count);
+
+final timerStreamProvider = StreamProvider<int>(
+    (ref) => Stream.periodic(const Duration(seconds: 1), (count) => count + 1));
