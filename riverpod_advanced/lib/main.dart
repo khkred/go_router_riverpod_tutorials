@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:riverpod_advanced/pages/counter_page.dart';
+import 'package:riverpod_advanced/pages/keep_alive_counter_page.dart';
 import 'package:riverpod_advanced/pages/users_family_list.dart';
 
 void main() {
   runApp(
-     const ProviderScope(child: MyApp()),
+    const ProviderScope(child: MyApp()),
   );
 }
 
@@ -28,26 +29,46 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
-      appBar: AppBar(title: const Text('Home Page'),),
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Home Page'),
+      ),
       body: SizedBox(
         width: double.infinity,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            ElevatedButton(onPressed: (){
-              Navigator.push(context, MaterialPageRoute(builder: (context) => const UsersFamilyList()));
-            }, child: const Text('Users Family Modifier')),
-
-            const SizedBox(height: 20,),
-
-
-            ElevatedButton(onPressed: (){
-              Navigator.push(context, MaterialPageRoute(builder: (context) => const CounterPage()));
-            }, child: const Text('Counter AutoDipose Page')),
-
+            ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const UsersFamilyList()));
+                },
+                child: const Text('Users Family Modifier')),
+            const SizedBox(
+              height: 20,
+            ),
+            ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const CounterPage()));
+                },
+                child: const Text('Counter AutoDispose Page')),
+            const SizedBox(
+              height: 20,
+            ),
+            ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const KeepAliveCounterPage()));
+                },
+                child: const Text('Counter Keep Alive Page')),
           ],
-          
         ),
       ),
     );
