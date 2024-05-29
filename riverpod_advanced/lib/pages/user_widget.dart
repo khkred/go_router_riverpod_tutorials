@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:riverpod_advanced/user_provider.dart';
+import 'package:riverpod_advanced/providers/user_provider.dart';
 
 class UserWidget extends HookConsumerWidget {
   final int userId;

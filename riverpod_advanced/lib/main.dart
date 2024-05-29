@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:riverpod_advanced/pages/counter_page.dart';
 import 'package:riverpod_advanced/pages/users_family_list.dart';
 
 void main() {
@@ -36,7 +37,15 @@ class HomePage extends StatelessWidget {
           children: [
             ElevatedButton(onPressed: (){
               Navigator.push(context, MaterialPageRoute(builder: (context) => const UsersFamilyList()));
-            }, child: const Text('Users Family Modifier'))
+            }, child: const Text('Users Family Modifier')),
+
+            const SizedBox(height: 20,),
+
+
+            ElevatedButton(onPressed: (){
+              Navigator.push(context, MaterialPageRoute(builder: (context) => const CounterPage()));
+            }, child: const Text('Counter AutoDipose Page')),
+
           ],
           
         ),
