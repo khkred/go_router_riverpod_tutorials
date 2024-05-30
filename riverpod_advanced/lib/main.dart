@@ -3,6 +3,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:riverpod_advanced/pages/counter_page.dart';
 import 'package:riverpod_advanced/pages/dependent_provider_page.dart';
 import 'package:riverpod_advanced/pages/keep_alive_counter_page.dart';
+import 'package:riverpod_advanced/pages/login_page.dart';
 import 'package:riverpod_advanced/pages/users_family_list.dart';
 
 void main() {
@@ -69,7 +70,6 @@ class HomePage extends StatelessWidget {
                           builder: (context) => const KeepAliveCounterPage()));
                 },
                 child: const Text('Counter Keep Alive Page')),
-
             const SizedBox(
               height: 20,
             ),
@@ -81,7 +81,17 @@ class HomePage extends StatelessWidget {
                           builder: (context) => const DependentProviderPage()));
                 },
                 child: const Text('Dependent Provider Page')),
-
+            const SizedBox(
+              height: 20,
+            ),
+            ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const LoginPage()));
+                },
+                child: const Text('Login Page')),
           ],
         ),
       ),
